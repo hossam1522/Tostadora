@@ -27,4 +27,8 @@ impl Piece {
             Color::Black
         }
     }
+
+    pub fn index(self) -> usize {
+        self as usize
+    }
 }

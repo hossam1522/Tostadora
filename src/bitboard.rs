@@ -1,3 +1,4 @@
+#[derive(Clone, Copy)]
 pub struct Bitboard(u64);
 
 impl Bitboard {
@@ -9,7 +10,12 @@ impl Bitboard {
         self.0 & (1 << square) != 0
     }
 
-    fn set_bit(mut self, square: u8) {
+    pub fn set_bit(mut self, square: u8) {
         self.0 |= 1 << square
+    }
+
+    /// This function changes the square position
+    pub fn pop_bit(mut self, square: u8) {
+        self.0 ^= 1 << square
     }
 }

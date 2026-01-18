@@ -1,4 +1,4 @@
-use crate::{bitboard::Bitboard, piece::Color};
+use crate::{bitboard::Bitboard, piece::Color, piece::Piece};
 
 pub struct Board {
     pieces: [Bitboard; 12],
@@ -25,5 +25,13 @@ impl Board {
             pieces: pos_pieces,
             side_to_move: Color::White,
         }
+    }
+
+    fn set_piece(self, piece: Piece, square: u8) {
+        self.pieces[piece.index()].set_bit(square);
+    }
+
+    fn remove_piece(self, piece: Piece, square: u8) {
+        self.pieces[piece.index()].pop_bit(square);
     }
 }
